@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://srvsoaqas01:8001/soa-infra/services/Labs/SOMA/soma?WSDL" uri="wsdl/srvsoaqas01_8001/soa-infra/services/Labs/SOMA/soma.wsdl"/>
+    <system systemId="http://srvsoaqas01:8001/soa-infra/services/Labs/SOMA/soma?XSD=xsd/soma.xsd" uri="wsdl/srvsoaqas01_8001/soa-infra/services/Labs/SOMA/soma.XSD_xsd/soma.xsd"/>
+</catalog>

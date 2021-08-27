@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<wsdl:definitions
+     name="SOMA"
+     targetNamespace="http://xmlns.oracle.com/Lab02/SOMA/SOMA"
+     xmlns:ns1="http://www.example.org"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:client="http://xmlns.oracle.com/Lab02/SOMA/SOMA"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <wsdl:documentation>
+        <abstractWSDL>http://srvsoaqas01:8001/soa-infra/services/Labs/SOMA!1.0/SOMA.wsdl</abstractWSDL>
+    </wsdl:documentation>
+    <plnk:partnerLinkType name="SOMA">
+        <plnk:role name="SOMAProvider" portType="client:SOMA"/>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://www.example.org" schemaLocation="http://srvsoaqas01:8001/soa-infra/services/Labs/SOMA/soma?XSD=xsd/soma.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="SOMARequestMessage">
+        <wsdl:part name="payload" element="ns1:Input"/>
+    </wsdl:message>
+    <wsdl:message name="SOMAResponseMessage">
+        <wsdl:part name="payload" element="ns1:Output"/>
+    </wsdl:message>
+    <wsdl:portType name="SOMA">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:SOMARequestMessage"/>
+            <wsdl:output message="client:SOMAResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOMABinding" type="client:SOMA">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="process">
+            <soap:operation style="document" soapAction="process"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="soma_client_ep">
+        <wsdl:port name="SOMA_pt" binding="client:SOMABinding">
+            <soap:address location="http://srvsoaqas01:8001/soa-infra/services/Labs/SOMA/soma"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
